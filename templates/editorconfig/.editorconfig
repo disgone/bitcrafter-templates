@@ -3,7 +3,7 @@
 ; then the rule will be silently ignored.
 
 ; This file is setup for use with the built in NET5+
-; Generated and added on 01/01/1999 via bitcrafter-buildprops
+; Generated and added on 01/01/1999 via bitcrafter-editorconfig
 
 root = true
 
