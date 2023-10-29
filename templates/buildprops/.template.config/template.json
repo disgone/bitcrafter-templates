@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Shaun Smith",
+  "classifications": [
+    "Config"
+  ],
+  "identity": "bitcrafter.buildprops",
+  "name": "BuildPropsTemplate",
+  "description": "Template for a centralized Directory.Build.props file to manage build configurations across projects.",
+  "shortName": "bitcrafter-buildprops",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "symbols": {
+    "createdDate": {
+      "type": "generated",
+      "generator": "now",
+      "parameters": {
+        "format": "MM/dd/yyyy HH:mm:ss.ffffzzz"
+      },
+      "replaces": "01/01/1999"
+    },
+    "currentYear": {
+      "type": "generated",
+      "generator": "now",
+      "parameters": {
+        "format": "yyyy"
+      },
+      "replaces": "1999"
+    },
+    "author": {
+      "type": "parameter",
+      "defaultValue": "John Doe",
+      "replaces": "John Doe"
+    },
+    "company": {
+      "type": "parameter",
+      "defaultValue": "Acme Inc",
+      "replaces": "Acme Inc"
+    }
+  }
+}
