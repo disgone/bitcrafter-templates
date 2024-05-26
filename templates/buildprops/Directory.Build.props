@@ -24,18 +24,18 @@
 
   <!-- Project Conventions -->
   <PropertyGroup>
-    <!-- Sets IsUnitTestProject to true if our project followings the convention where unit test project names end in 'Test' or 'Tests' -->
-    <IsUnitTestProject Condition=" '$(IsUnitTestProject)' == '' AND ( $(MSBuildProjectName.EndsWith('.Test')) OR $(MSBuildProjectName.EndsWith('.Tests')) ) ">true</IsUnitTestProject>
-    <IsUnitTestProject Condition=" '$(IsUnitTestProject)' == '' ">false</IsUnitTestProject>
+    <!-- Sets IsTestProject to true if our project followings the convention where unit test project names end in 'Test' or 'Tests' -->
+    <IsTestProject Condition=" '$(IsTestProject)' == '' AND ( $(MSBuildProjectName.EndsWith('.Test')) OR $(MSBuildProjectName.EndsWith('.Tests')) ) ">true</IsTestProject>
+    <IsTestProject Condition=" '$(IsTestProject)' == '' ">false</IsTestProject>
   </PropertyGroup>
 
   <!-- Configure Unit Test Projects -->
   <!-- These properties/references can be removed by default, or overriden with a different version/value if desired -->
-  <PropertyGroup Condition="'$(IsUnitTestProject)' == 'true'">
+  <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(IsUnitTestProject)' == 'true'">
+  <ItemGroup Condition="'$(IsTestProject)' == 'true'">
     <PackageReference Include="FluentAssertions" Version="6.11.0"/>
     <PackageReference Include="FluentAssertions.Analyzers" Version="0.19.1">
       <PrivateAssets>all</PrivateAssets>
