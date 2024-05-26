@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "Shaun Smith",
   "classifications": [
-    "Config"
+    "Common", "Console", "Library"
   ],
   "identity": "bitcrafter.buildprops",
   "name": "BuildPropsTemplate",
@@ -29,15 +29,26 @@
       },
       "replaces": "1999"
     },
-    "author": {
+    "authors": {
       "type": "parameter",
+      "datatype": "string",
       "defaultValue": "John Doe",
-      "replaces": "John Doe"
+      "replaces": "John Doe",
+      "description": "Sets the 'Authors' assembly metadata for all projects in the solution, used to identify the authors of the project."
     },
     "company": {
+      "binding": "",
       "type": "parameter",
+      "datatype": "string",
       "defaultValue": "Acme Inc",
-      "replaces": "Acme Inc"
+      "replaces": "Acme Inc",
+      "description": "Sets the 'Company' assembly metadata for all projects in the solution, used to identify the company that produced the project."
+    },
+    "treatWarningsAsErrors": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "When true, build warnings are treated as errors."
     }
   }
 }
