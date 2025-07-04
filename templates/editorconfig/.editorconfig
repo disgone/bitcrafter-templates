@@ -459,53 +459,27 @@ dotnet_diagnostic.IDE0051.severity = warning
 
 # Code quality
 
+# CA1305: Specific Culture when working with string functions
+# This is a warning by default (and probably should be)
+dotnet_diagnostic.CA1305.severity = suggestion
+
+# CA1309: Use ordinal string comparison
+dotnet_diagnostic.CA1309.severity = suggestion
+
 # CA1707: Paramter naming
 dotnet_diagnostic.CA1707.severity = warning
 
 # CA1712: Do not prefix enum values with type name
 dotnet_diagnostic.CA1712.severity = warning
 
+# CA1848: Use the LoggerMessage delegates
+dotnet_diagnostic.CA1848.severity = suggestion
+
 # CS1998: Async method lacking await call
 dotnet_diagnostic.CS1998.severity = warning
-
-# CA1309: Use ordinal string comparison
-dotnet_diagnostic.CA1309.severity = suggestion
-
-# CA1305: Specific Culture when working with string functions
-# This is a warning by default (and probably should be)
-dotnet_diagnostic.CA1305.severity = suggestion
 
 # CA5350: Use of weak cryptographic algorithms
 dotnet_diagnostic.CA5350.severity = suggestion
 
 # CA5351: Use of broken cryptographic algorithms
 dotnet_diagnostic.CA5351.severity = warning
-
-
-# Sonar Analayzer rules
-
-# Parameter names should match interface; Ignore in favor for CA1725
-dotnet_diagnostic.S927.severity = silent
-
-# Removed unused property; Ignore in favor for IDE0051
-dotnet_diagnostic.S1144.severity = silent
-
-# Prefer Any(); Ignore in favor of CA1827
-dotnet_diagnostic.S1155.severity = silent
-
-# Prefer .Count over .Count(); Ignore in favor of CA1829
-dotnet_diagnostic.S2971.severity = silent
-
-# Convert to auto property without backing field
-dotnet_diagnostic.S2292.severity = suggestion
-
-
-# Test file rule tuning
-[*Test*.cs]
-dotnet_diagnostic.CA1707.severity = silent
-
-# Bug which may not be fixed until NET 8
-# https://github.com/dotnet/roslyn-analyzers/issues/6141
-# Squelch warnings about Program being able to be sealed
-[Program.cs]
-dotnet_diagnostic.CA1852.severity = silent
