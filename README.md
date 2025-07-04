@@ -1,23 +1,21 @@
 # Project & Item Templates
 
-An opinionated set of pre-configured file templates aimed to speed up .NET project initialization and configuration. This collection is tailored to my personal workflow and preferences, but feel free to fork or adapt it to your needs.
+A curated set of .NET templates for bootstrapping projects and configs. Built around my workflow, but easy to fork or adapt.
 
 ## Prerequisites
 
-- [.NET SDK](https://dotnet.microsoft.com/download) installed on your machine.
+- [.NET SDK](https://dotnet.microsoft.com/download)
 
-## Getting Started
+## Installation
 
-To start using these templates, you'll need to install them. There are a couple of options:
+### Manual
 
-### Manual Install
-
-1. Clone the repository to your local machine:
+1. Clone the repo:
    ```sh
    git clone https://github.com/disgone/bitcrafter-templates.git
    ```
 
-2. Navigate to the repository directory:
+2. Go to the repo directory:
    ```sh
    cd bitcrafter-templates
    ```
@@ -29,27 +27,50 @@ To start using these templates, you'll need to install them. There are a couple 
 
 ## Usage
 
-Once the templates are installed, you can create new projects or items using them. You can view a list of the available templates using the `dotnet new list` command.
+Once installed, use the templates with `dotnet new`.
 
-### Usage Example
+### See Available Templates
 
-To create a new project using the `bitcrafter-buildprops` template, run:
+```sh
+dotnet new list
+```
+
+### Create a Project
+
 ```sh
 dotnet new bitcrafter-buildprops
 ```
 
-You can also specify additional options, for example:
+With optional metadata:
+
 ```sh
 dotnet new bitcrafter-buildprops -au "Janet Doe" -c "Some Company, LLC"
 ```
 
 ## Templates
 
-Here's a small overview of the templates currently available (and documented).
+### `bitcrafter-editorconfig`
 
-- `bitcrafter-editorconfig` - Generates and adds an `.editorconfig` pre-setup for usage at U.S. Bank to help guide and follow good coding practices.
+Adds a `.editorconfig` file to help keep code style consistent across your projects.
 
-- `bitcrafter-buildprops` - Generates and adds a `Directory.Build.props` configuration file to set generic assembly information, enable .NET analyzers, and configure unit test projects. Author and company information can be overridden on creation:
-  ```sh
-  dotnet new bitcrafter-buildprops -au "Janet Doe" -c "Some Company, LLC"
-  ```
+### `bitcrafter-buildprops`
+
+Creates a `Directory.Build.props` file with common project settings, designed to centralize build configurations:
+
+-   **Assembly Metadata**: Configures common assembly information like authors, company, and copyright.
+-   **Code Analysis**: Enables .NET analyzers and enforces code style in build. By default, build warnings are treated as errors.
+-   **Deterministic Builds**: Ensures reproducible builds by setting the `Deterministic` property to `true`.
+-   **Source Link**: Conditionally enables Source Link properties for projects intended to be packed as NuGet packages, improving debugging experience.
+-   **Central Package Management (CPM)**: Optionally enables CPM for the solution, promoting consistent package versioning.
+
+**Usage with optional parameters:**
+
+```sh
+dotnet new bitcrafter-buildprops -au "Janet Doe" -c "Some Company, LLC" --twae false --cpm false
+```
+
+**Parameters:**
+-   `-au` or `--authors`: Sets the 'Authors' assembly metadata.
+-   `-c` or `--company`: Sets the 'Company' assembly metadata.
+-   `--twae` or `--treat-warnings-as-errors`: Set to `true` (default) to treat build warnings as errors, or `false` to allow warnings.
+-   `--cpm` or `--enable-cpm`: Set to `true` (default) to enable Central Package Management, or `false` to disable.

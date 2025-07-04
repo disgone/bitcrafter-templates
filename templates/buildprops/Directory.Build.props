@@ -1,5 +1,8 @@
 <Project>
   <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- Configure code analysis -->
     <!-- This is enabled by default in NET5+ -->
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -8,7 +11,7 @@
     <!--#if (treatWarningsAsErrors) -->
     <!-- Treat warning as errors -->
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
     <!--#endif -->
   </PropertyGroup>
 
@@ -18,7 +21,22 @@
     <Company>Acme Inc</Company>
     <Copyright>Copyright © 1999 Acme Inc</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
+    <!-- Optional: Configure repository information for Source Link and NuGet packages -->
+    <!-- Uncomment and update the following properties if your project is hosted in a public repository -->
+    <!--
+    <RepositoryUrl>https://github.com/your-org/your-repo</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/your-org/your-repo</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    -->
   </PropertyGroup>
+
+  <!--#if (enableCpm) -->
+  <!-- Enable Central Package Management (CPM) -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <!--#endif -->
 
   <!-- Project Conventions -->
   <PropertyGroup>
@@ -27,34 +45,19 @@
     <IsTestProject Condition=" '$(IsTestProject)' == '' ">false</IsTestProject>
   </PropertyGroup>
 
+  <!-- Configure Source Link and Deterministic Builds -->
+  <PropertyGroup>
+    <Deterministic>true</Deterministic>
+    <PublishRepositoryUrl Condition="'$(IsPackable)' == 'true'">true</PublishRepositoryUrl>
+    <EmbedUntrackedSources Condition="'$(IsPackable)' == 'true'">true</EmbedUntrackedSources>
+    <DebugType Condition="'$(IsPackable)' == 'true'">embedded</DebugType>
+  </PropertyGroup>
+
   <!-- Configure Unit Test Projects -->
   <!-- These properties/references can be removed by default, or overriden with a different version/value if desired -->
   <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
-  <ItemGroup Condition="'$(IsTestProject)' == 'true'">
-    <PackageReference Include="FluentAssertions" Version="6.12.0"/>
-    <PackageReference Include="FluentAssertions.Analyzers" Version="0.32.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0"/>
-    <PackageReference Include="Moq" Version="4.20.70"/>
-    <PackageReference Include="xunit" Version="2.8.1"/>
-    <PackageReference Include="xunit.analyzers" Version="1.14.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="6.0.2">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
 
   <!-- Generated and added on 01/01/1999 via bitcrafter-buildprops -->
 </Project>

@@ -47,8 +47,18 @@
     "treatWarningsAsErrors": {
       "type": "parameter",
       "datatype": "bool",
-      "defaultValue": "false",
-      "description": "When true, build warnings are treated as errors."
+      "defaultValue": "true",
+      "description": "When true, build warnings are treated as errors.",
+      "displayName": "Treat Warnings as Errors",
+      "shortName": "twae"
+    },
+    "enableCpm": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "When true, enables Central Package Management (CPM) for the solution.",
+      "displayName": "Enable Central Package Management",
+      "shortName": "cpm"
     }
   }
 }
